@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <style>
         .category {
             width: 100%;
@@ -29,57 +30,58 @@
             color: #424242;
 
         }
-
     </style>
-<body>
-<ul class="category">
-    <li><span>微博</span></li>
-    <li><span>论坛</span></li>
-    <li><span>博客</span></li>
-    <li><span>段子</span></li>
-    <li><span>社会</span></li>
-    <li><span>历史</span></li>
-    <li><span>电影</span></li>
-    <li><span>彩票</span></li>
-    <li><span>NBA</span></li>
-    <li><span>国际足球</span></li>
-    <li><span>CBA</span></li>
-    <li><span>跑步</span></li>
-    <li><span>手机</span></li>
-    <li><span>数码</span></li>
-    <li><span>移动互联</span></li>
-    <li><span>轻松一刻</span></li>
-    <li><span>原创</span></li>
-    <li><span>家居</span></li>
-    <li><span>时尚大家</span></li>
-    <li><span>健康</span></li>
-    <li><span>读书</span></li>
-    <li><span>酒香</span></li>
-    <li><span>教育</span></li>
-    <li><span>亲子</span></li>
-    <li><span>葡萄酒</span></li>
-    <li><span>旅游</span></li>
-    <li><span>暴雪游戏</span></li>
-    <li><span>情感</span></li>
-    <li><span>政务</span></li>
-</ul>
-<script src="../script/zepto.min.js"></script>
-<script>
-    apiready = function () {
-        $(".category").on('click', 'li', function () {
-            api.setFrameGroupIndex({
-                name: 'group',
-                index: 1
-            });
-            api.execScript({
-                name: 'root',
-                script: 'openMenu()'
-            })
-            /*api.closeFrame({name:'frm_more_nav'});
-             api.closeFrame();*/
 
-        })
-    }
-</script>
+<body>
+    <ul class="category">
+        <li><span><a href="../index.html">微博</a></span></li>
+        <li><span><a href="../index.html">论坛</a></span></li>
+        <li><span><a href="../index.html">博客</a></span></li>
+        <li><span><a href="../index.html">段子</a></span></li>
+        <li><span><a href="../index.html">社会</a></span></li>
+        <li><span><a href="../index.html">历史</a></span></li>
+        <li><span><a href="../index.html">电影</a></span></li>
+        <li><span><a href="../index.html">彩票</a></span></li>
+        <li><span><a href="../index.html">NBA</a></span></li>
+        <li><span><a href="../index.html">国际足球</a></span></li>
+        <li><span><a href="../index.html">CBA</a></span></li>
+        <li><span><a href="../index.html">跑步</a></span></li>
+        <li><span><a href="../index.html">手机</a></span></li>
+        <li><span><a href="../index.html">数码</a></span></li>
+        <li><span><a href="../index.html">移动互联</a></span></li>
+        <li><span><a href="../index.html">轻松一刻</a></span></li>
+        <li><span><a href="../index.html">原创</a></span></li>
+        <li><span><a href="../index.html">家具</a></span></li>
+        <li><span><a href="../index.html">时尚大家</a></span></li>
+        <li><span><a href="../index.html">健康</a></span></li>
+        <li><span><a href="../index.html">读书</a></span></li>
+        <li><span><a href="../index.html">酒香</a></span></li>
+        <li><span><a href="../index.html">教育</a></span></li>
+        <li><span><a href="../index.html">亲子</a></span></li>
+        <li><span><a href="../index.html">葡萄酒</a></span></li>
+        <li><span><a href="../index.htmlv">旅游</a></span></li>
+        <li><span><a href="../index.html">暴雪游戏</a></span></li>
+        <li><span><a href="../index.html">情感</a></span></li>
+        <li><span><a href="../index.html">财务</a></span></li>
+    </ul>
+    <script src="../script/zepto.min.js"></script>
+    <script>
+        apiready = function () {
+            $(".category").on('click', 'li', function () {
+                api.setFrameGroupIndex({
+                    name: 'group',
+                    index: 1
+                });
+                api.execScript({
+                    name: 'root',
+                    script: 'openMenu()'
+                })
+                /*api.closeFrame({name:'frm_more_nav'});
+                 api.closeFrame();*/
+
+            })
+        }
+    </script>
 </body>
+
 </html>

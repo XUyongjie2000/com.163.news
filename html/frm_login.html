@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport"
+        content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
-    <link rel="stylesheet" type="text/css" href="../css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <style>
         body {
             display: -webkit-box;
             -webkit-box-orient: vertical;
         }
-        .content{
-            -webkit-box-flex:1;
+
+        .content {
+            -webkit-box-flex: 1;
         }
+
         i {
             display: block;
             width: 30px;
@@ -22,6 +26,7 @@
             background-repeat: no-repeat no-repeat;
             background-position: center;
         }
+
         .user {
             background-image: url("../image/login_username_icon@2x.png");
         }
@@ -61,132 +66,164 @@
             border-radius: 8px;
             height: 40px;
             line-height: 40px;
-            border:1px solid #CECECE;
+            border: 1px solid #CECECE;
         }
-        input{
+
+        input {
             padding-left: 10px;
             font-size: 18px;
         }
-        .other-login-wrap,.other-login{
+
+        .other-login-wrap,
+        .other-login {
             margin-top: 20px;
         }
-        .other-login-lable{
-            padding:10px 20px;
+
+        .other-login-lable {
+            padding: 10px 20px;
             border-bottom: 1px solid #E7E7E7;
         }
-        .other-login{
+
+        .other-login {
             text-align: center;
         }
-        .other-login div{
+
+        .other-login div {
             display: inline-block;
             position: relative;
             width: 49.4%;
-            height:60px;
+            height: 60px;
             background-repeat: no-repeat no-repeat;
             background-position: center center;
             background-size: 60px;
         }
-        .sina{
+
+        .sina {
             background-image: url("../image/share_platform_sina@2x.png");
         }
-        .qq{
+
+        .qq {
             background-image: url("../image/share_platform_qqfriends@2x.png");
         }
-        .other-login div span{
-            margin-top:70px ;
+
+        .other-login div span {
+            margin-top: 70px;
         }
-        footer{
-            position:relative;
+
+        footer {
+            position: relative;
             height: 50px;
             text-align: center;
             line-height: 50px;
         }
-        .fast-reg{
+
+        .fast-reg {
             line-height: 20px;
             position: absolute;
             border-radius: 10px;
             border: 1px solid #E7E7E7;
-            bottom:14px;
+            bottom: 14px;
             right: 20px;
             width: 70px;
         }
+
+        .back {
+            position: absolute;
+            bottom: 15px;
+            left: 50px;
+            background-color: black;
+            opacity: 0.4;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .back a {
+            color: #ffffff;
+        }
     </style>
 </head>
-<body>
-<div class="content">
-    <div class="form">
-        <div class="input-wrap">
-            <i class="user"></i>
-            <input type="text" placeholder="邮箱账号或手机号"  id="username" value="">
-        </div>
-        <div class="input-wrap">
-            <i class="password"></i>
-            <input type="password" placeholder="密码"  id="password" value="">
-        </div>
-    </div>
-    <div class="btn" id="login" tapmode="" onclick="login()">登录</div>
-    <div class="other-login-wrap">
-        <div class="other-login-lable">
-            还可选择以下方式登陆
-        </div>
-        <div class="other-login">
-            <div class="sina">
-                <span class="sina-label">新浪微博登陆</span>
-            </div>
-            <div class="qq">
-                <span class="qq-label">QQ登陆</span>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
-    <div>没有账号？</div>
-    <div class="fast-reg" tapmode="" onclick="toRegister()">立即注册</div>
-</footer>
-<script src="../script/zepto.min.js"></script>
-<script>
-    apiready = function () {
 
-    };
-    function toRegister(){
-        api.openWin({
-            name:'register',
-            url:'win_register.html'
-        })
-    }
-    function login(){
-        api.showProgress();
-        var username=$("#username").val();
-        var password=$("#password").val();
-        var user = api.require('user');
-        user.login({
-            username: username,
-            password:password
-        }, function(ret, err) {
-            api.hideProgress();
-            if (ret) {
-                localStorage.setItem('userId',ret.id);
-                api.execScript({
-                    name:'user',
-                    script:'checkUserId()'
-                })
-                api.execScript({
-                    name:'root',
-                    script:'checkUserId()'
-                })
-                api.alert({
-                    title: '登陆成功',
-                    buttons: ['确定']
-                }, function (ret, err) {
-                    if (ret.buttonIndex == 1) {
-                        api.closeWin();
-                    }
-                });
-            }else{
-                api.toast({msg: err.message, location: "middle"})
-            }
-        });
-    }
-</script>
+<body>
+    <div class="content">
+        <div class="form">
+            <div class="input-wrap">
+                <i class="user"></i>
+                <input type="text" placeholder="邮箱账号或手机号" id="username" value="">
+            </div>
+            <div class="input-wrap">
+                <i class="password"></i>
+                <input type="password" placeholder="密码" id="password" value="">
+            </div>
+        </div>
+        <div class="btn" id="login" tapmode="" onclick="login()">登录</div>
+        <div class="other-login-wrap">
+            <div class="other-login-lable">
+                还可选择以下方式登陆
+            </div>
+            <div class="other-login">
+                <div class="sina">
+                    <span class="sina-label">新浪微博登陆</span>
+                </div>
+                <div class="qq">
+                    <span class="qq-label">QQ登陆</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>没有账号？</div>
+        <div class="fast-reg" tapmode="" onclick="toRegister()">立即注册</div>
+    </footer>
+    <div class="back">
+        <a href="./win_user.html">返回</a>
+    </div>
+    <script src="../script/zepto.min.js"></script>
+    <script>
+        apiready = function () {
+
+        };
+        function toRegister() {
+            api.openWin({
+                name: 'register',
+                url: 'win_register.html'
+            })
+        }
+        function login() {
+            api.showProgress();
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var user = api.require('user');
+            user.login({
+                username: username,
+                password: password
+            }, function (ret, err) {
+                api.hideProgress();
+                if (ret) {
+                    localStorage.setItem('userId', ret.id);
+                    api.execScript({
+                        name: 'user',
+                        script: 'checkUserId()'
+                    })
+                    api.execScript({
+                        name: 'root',
+                        script: 'checkUserId()'
+                    })
+                    api.alert({
+                        title: '登陆成功',
+                        buttons: ['确定']
+                    }, function (ret, err) {
+                        if (ret.buttonIndex == 1) {
+                            api.closeWin();
+                        }
+                    });
+                } else {
+                    api.toast({ msg: err.message, location: "middle" })
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>
