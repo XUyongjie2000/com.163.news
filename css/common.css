@@ -12,7 +12,7 @@ body {
 body {
   color: rgb(92, 95, 95);
   font-size: 14px;
-  height: 10000px;
+  /* height: 10000px; */
 }
 
 .hidden {
@@ -150,4 +150,11 @@ body {
   float: right;
   height: calc(110rem / 64);
   width: calc(200rem / 64);
+}
+.jiewei {
+  height: calc(100rem / 64);
+}
+.news-5 img {
+  margin-bottom: calc(50rem / 64);
+  margin-left: calc(40rem / 64);
 }
