@@ -12,6 +12,7 @@ body {
 body {
   color: rgb(92, 95, 95);
   font-size: 14px;
+  /* height: 10000px; */
 }
 
 .hidden {
@@ -92,24 +93,16 @@ header {
   visibility: hidden;
 }
 
-/*header*/
-/*毛玻璃效果*/
-.filter {
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
-}
-/*毛玻璃效果*/
 .switchNav {
   color: red;
 }
 .news h3 {
+  font-size: calc(30rem / 64);
   display: block;
-  width: 280px;
   color: #404040;
 }
 .zhiding {
+  font-size: calc(20rem / 64);
   color: red;
 }
 .gentie {
@@ -117,10 +110,40 @@ header {
 }
 .news {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: calc(10rem / 64);
 }
 .news img {
   float: right;
-  width: 100px;
-  height: 60px;
+  width: calc(200rem / 64);
+  height: calc(110rem / 64);
+}
+.news-2 {
+  font-size: calc(30rem / 64);
+  display: block;
+  color: #404040;
+}
+.news-2 span {
+  display: inline-block;
+  font-size: calc(20rem / 64);
+}
+.news-2 img {
+  float: left;
+  width: calc(200rem / 64);
+  margin: 0 calc(5rem / 64);
+  height: calc(125rem / 64);
+}
+.news-3 img {
+  width: 100%;
+  height: calc(350rem / 64);
+}
+.news-3 {
+  font-size: calc(30rem / 64);
+  display: block;
+  color: #404040;
+}
+.news-3 span {
+  display: inline-block;
+  font-size: calc(20rem / 64);
+  border: calc(1rem / 64) solid #5c5f5f;
+  border-radius: calc(5rem / 64);
 }

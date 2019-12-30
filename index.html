@@ -6,6 +6,8 @@
     <meta name="viewport"
         content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <title></title>
+    <script src="./js/flexible_css.debug.js"></script>
+    <script src="./js/flexible.debug.js"></script>
     <link rel="stylesheet" type="text/css" href="css/api.css" />
     <link rel="stylesheet" type="text/css" href="css/common.css" />
     <style>
@@ -160,13 +162,6 @@
     </header>
     <nav>
         <div id="wrapper">
-            <div id="scroller">
-                <ul>
-                    <!--<li data-index=""  class="" tapmode="" onclick="openFrame(this)">2</li>
-                <li data-index=""  class="" tapmode="" onclick="openFrame(this)">1</li>
-                <li data-index=""  class="" tapmode="" onclick="openFrame(this)">3</li>-->
-                </ul>
-            </div>
         </div>
         <div class="switchNav hidden">成功为您推荐8条新内容
 
@@ -197,109 +192,48 @@
         <span class="zhiding">热门 <span class="gentie">每日经济新闻</span></span>
 
     </div>
+    <div class="news-2">
+        <h3>我国有条河，水量是黄河7倍，面积打过长江，很多人不知</h3>
+        <img src="./image/huanghe1.jpg" alt="">
+        <img src="./image/huanghe2.jpg" alt="">
+        <img src="./image/huanghe3.jpg" alt="">
+        <span class="gentie">庄生一梦 370跟帖</span>
+
+    </div>
+    <div class="news-2">
+        <h3>杭州郊区为什么会出现200斤的邵棋</h3>
+        <img src="./image/sq3.jpg" alt="">
+        <img src="./image/sq2.jpg" alt="">
+        <img src="./image/sq1.jpg" alt="">
+        <span class="gentie">问天使者 100跟帖</span>
+
+    </div>
+    <div class="news-3">
+        <h3>福特锐际，先锋性能颠覆想象</h3>
+        <img src="./image/guanggao1.jpg" alt="">
+        <span class="gentie">广告</span>
+
+    </div>
+    <div class="news-2">
+        <h3>此国造出核弹又主动销毁，如今富得流油无人敢惹，美俄都主动拉拢</h3>
+        <img src="./image/guo1.jpg" alt="">
+        <img src="./image/guo2.jpg" alt="">
+        <img src="./image/guo3.jpg" alt="">
+        <span class="gentie">大神说娱乐八卦 467跟帖</span>
+
+    </div>
+    <div class="news-2">
+        <h3>一口气买两艘中国造军舰，直接从上海出发：向印度东部急速航行</h3>
+        <img src="./image/jian1.jpg" alt="">
+        <img src="./image/jian2.jpg" alt="">
+        <img src="./image/jian3.jpg" alt="">
+        <span class="gentie">无定河 471跟帖</span>
+
+    </div>
     <script type="text/javascript" src="script/api.js"></script>
     <script type="text/javascript" src="script/zepto.min.js"></script>
     <script type="text/javascript" src="script/iscroll.js"></script>
     <script>
-        var myScroll, menuOpened = false;
-        function loaded() {
-            try {
-                myScroll = new IScroll('#wrapper', {
-                    eventPassthrough: true,
-                    scrollX: true,
-                    scrollY: false,
-                    preventDefault: false
-                });
-            } catch (e) {
-                alert(e)
-            }
-        }
-        apiready = function () {
-            $api.fixStatusBar($api.dom(".header"));
-            try {
-                checkUserId();
-                var model = api.require('model');
-                var query = api.require('query');
-                model.config({
-                    appId: 'A6961750411369',
-                    appKey: 'ABD8C546-8715-E13A-4025-4939457609E8',
-                    host: 'https://d.apicloud.com'
-                });
-                api.showProgress();
-                query.createQuery(function (ret, err) {
-                    if (ret && ret.qid) {
-                        var queryId = ret.qid;
-                        model.findAll({ class: "nav", qid: queryId }, function (ret, err) {
-                            api.hideProgress();
-                            if (ret) {
-                                try {
-                                    var navHtml = '', frames = [];
-                                    for (var i in ret) {
-                                        var active = i == 0 ? 'nav_active' : '', frame = {};
-                                        navHtml += '<li data-index="' + i + '" id="' + ret[i].id + '" class="' + active + '" tapmode="" onclick="openFrame(this)">' + ret[i].name + '</li>';
-                                        frame.name = 'frame_' + i;
-                                        frame.url = i == 1 ? 'html/frm_hotSpot.html' : 'html/frm_topLine.html';
-                                        frame.pageParam = { id: ret[i].id, index: i };
-                                        frames.push(frame);
-                                    }
-                                    $("#scroller").find('ul').html(navHtml);
-                                    loaded();
-                                    openFrameGroup(frames);
-                                } catch (e) {
-                                    alert(e)
-                                }
-
-                            } else {
-                                api.toast({ msg: err.msg, location: 'middle' })
-                            }
-                        });
-                    }
-                });
-                fixIos7Bar($(".header"));
-
-            } catch (e) {
-                alert(e)
-            }
-
-        };
-
-        function checkUserId() {
-            if (localStorage.getItem('userId')) {
-                $(".user").addClass('login-user');
-            } else {
-                $(".user").removeClass('login-user');
-            }
-        }
-
-        function openFrame(obj) {
-            try {
-                api.setFrameGroupIndex({
-                    name: 'group',
-                    index: $(obj).data('index'),
-                    scroll: true
-                });
-            } catch (e) {
-                alert(e)
-            }
-
-        }
-
-        function openFrameGroup(frames) {
-            api.openFrameGroup({
-                name: 'group',
-                scrollEnabled: true,
-                rect: { x: 0, y: $("header").height() + $("nav").height(), w: 'auto', h: 'auto' },
-                index: 0,
-                frames: frames
-            }, function (ret, err) {
-                if (ret.index >= 4) {
-                    myScroll.scrollTo(-$("li").width() * (ret.index - 4), 0, 1000);
-                }
-                $("#scroller").find('li').removeClass('nav_active').eq(ret.index).addClass('nav_active');
-            });
-        }
-
-
         function openNav() {
             var $arrow_down = $('.arrow_down');
             if ($arrow_down.hasClass('arrow_up')) {
@@ -315,96 +249,6 @@
             }
         }
 
-        function _openNav() {
-            api.openFrame({
-                name: 'frm_nav',
-                url: 'html/frm_nav.html',
-                rect: {
-                    x: 0,
-                    y: $("header").height() + $("nav").height(),
-                    w: $("body").width(),
-                    h: 'auto'
-                },
-                bounces: false
-            });
-
-        }
-
-        function _closeNav() {
-            api.closeFrame({
-                name: 'frm_nav'
-            });
-            api.closeFrame({
-                name: 'frm_more_nav'
-            })
-        }
-
-        function openMenu() {
-            if ($('.arrow_down').hasClass('arrow_up')) {
-                $('.arrow_down').removeClass('arrow_up');
-                $(".switchNav").addClass('hidden');
-                $("#wrapper").removeClass('hidden');
-                _closeNav()
-            } else {
-                /*if (!menuOpened) {
-                    api.openFrame({
-                        name: 'menu',
-                        url: 'html/frm_menu.html',
-                        bounces: false,
-                        rect: {
-                            x: -($("body").width()),// -($("body").width() * .25),
-                            y: 0,
-                            w: $("body").width(),
-                            h: $("body").height()
-                        }
-                    });
-                    menuOpened = true;
-                }*/
-                //_animation(api.winWidth * 0.75, addFilter);
-            }
-        }
-
-        function addFilter() {
-            $(".cover").removeClass('hidden');
-            $("body").addClass('filter');
-            api.execScript({ frameName: 'topLine', script: 'addFilter()' });
-        }
-
-        function _animation(x, callBack) {
-            api.animation({
-                name: 'menu',
-                duration: 200,
-                curve: 'easeIn',
-                translation: {
-                    x: x,
-                    y: 0,
-                    z: 0
-                }
-            }, function () {
-                if (callBack) {
-                    callBack();
-                }
-            });
-        }
-
-        function closeMenu() {
-            _animation(-api.winWidth * 0.75, function () {
-                api.execScript({ frameName: 'topLine', script: '_clearFilter()' });
-                $("body").removeClass('filter');
-                $(".cover").addClass('hidden');
-            });
-        }
-        function openUser() {
-            api.openWin({
-                name: 'user',
-                url: 'html/win_user.html'
-            })
-        }
-        function clearFilter() {
-            if ($("body").hasClass('filter')) {
-                closeMenu();
-            }
-        }
     </script>
 </body>
 
