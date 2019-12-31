@@ -106,3 +106,6 @@ body s {
 .foot img {
   height: 44px;
 }
+.diandi {
+  height: calc(50rem / 64);
+}
