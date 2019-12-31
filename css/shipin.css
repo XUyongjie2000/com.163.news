@@ -82,3 +82,13 @@ body {
 .last {
   height: calc(100rem / 64);
 }
+.dianzan span {
+  margin-left: calc(100rem / 64);
+}
+.dianzan img {
+  width: calc(50rem / 64);
+  height: calc(50rem / 64);
+}
+.dianzan {
+  background-color: #fbfbfb;
+}
